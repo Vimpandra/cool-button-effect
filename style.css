@@ -1,0 +1,244 @@
+/* Button */
+
+.main {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 700ms;
+}
+.dark {
+    background-color: black;
+    transition: background-color 700ms;
+}
+.clear {
+    background-color: white;
+    transition: background-color 700ms;
+}
+
+h1 {
+    font-size: 1.2em;
+    font-weight: 300;
+}
+.on {
+    color: black;
+}
+.off {
+    color: white;
+}
+
+/* Light mode */
+
+.on-btn {
+    --background-color: white;
+    --border-color: linear-gradient(to bottom right, rgb(49, 153, 238), rgb(1, 36, 77));
+    --border-width: .2em;
+    --edge-size: .5em;
+
+    display: inline-grid;
+    font-size: clamp(2rem, 1rem + 5vw, 4rem);
+    font-weight: bold;
+    width: 7em;
+    padding: 0.5em 1em;
+    color: rgb(1, 36, 77);
+    background: var(--background-color);
+    border: 0;
+    isolation: isolate;
+    position: relative;
+
+    clip-path: polygon(
+        /* top left 1 */
+        0
+        var(--edge-size),
+        /* top left 2 */
+        var(--edge-size)
+        0,
+        /* top right */ 
+        100%
+        0,
+        /* bottom right 1 */
+        100%
+        calc(100% - var(--edge-size)),
+        /* bottom right 2 */
+        calc(100% - var(--edge-size))
+        100%,
+        /* bottom left */
+        0
+        100%
+    );
+    transition: color 150ms;
+}
+
+.on-btn::before,
+.on-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.on-btn::before {
+    background: var(--border-color);
+    z-index: -2;
+}
+
+.on-btn::after {
+    background: var(--background-color);
+    z-index: -1;
+
+    clip-path: polygon(
+        /* top left 1 */
+        var(--border-width)
+        calc(var(--edge-size) + (var(--border-width) * .5)),
+        /* top left 2 */
+        calc(var(--edge-size) + (var(--border-width) * .5))
+        var(--border-width),
+        /* top right */ 
+        calc(100% - var(--border-width))
+        var(--border-width),
+        /* bottom right 1 */
+        calc(100% - var(--border-width))
+        calc(100% - calc(var(--edge-size) + (var(--border-width) * .5))),
+        /* bottom right 2 */
+        calc(100% - calc(var(--edge-size) + (var(--border-width) * .5)))
+        calc(100% - var(--border-width)),
+        /* bottom left */
+        var(--border-width)
+        calc(100% - var(--border-width))
+    );
+    transition: clip-path 300ms;
+}
+
+.on-btn:hover::after {
+    clip-path: polygon(
+        /* top left 1 */
+        var(--border-width)
+        calc(var(--edge-size) + (var(--border-width) * .5)),
+        /* top left 2 */
+        calc(var(--edge-size) + (var(--border-width) * .5))
+        var(--border-width),
+        /* top right */ 
+        calc(var(--edge-size) + (var(--border-width) * .5))
+        var(--border-width),
+        /* bottom right 1 */
+        var(--border-width)
+        calc(var(--edge-size) + (var(--border-width) * .5)),
+        /* bottom right 2 */
+        var(--border-width)
+        calc(100% - var(--border-width)),
+        /* bottom left */
+        var(--border-width)
+        calc(100% - var(--border-width))
+    );
+}
+.on-btn:hover {
+    color: white;
+}
+
+/* Dark mode */
+
+.off-btn {
+    --background-color: black;
+    --border-color: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(185, 185, 185));
+    --border-width: .2em;
+    --edge-size: .5em;
+
+    display: inline-grid;
+    font-size: clamp(2rem, 1rem + 5vw, 4rem);
+    font-weight: bold;
+    width: 7em;
+    padding: 0.5em 1em;
+    color: white;
+    background: var(--background-color);
+    border: 0;
+    isolation: isolate;
+    position: relative;
+
+    clip-path: polygon(
+        /* top left 1 */
+        0
+        var(--edge-size),
+        /* top left 2 */
+        var(--edge-size)
+        0,
+        /* top right */ 
+        100%
+        0,
+        /* bottom right 1 */
+        100%
+        calc(100% - var(--edge-size)),
+        /* bottom right 2 */
+        calc(100% - var(--edge-size))
+        100%,
+        /* bottom left */
+        0
+        100%
+    );
+    transition: color 150ms;
+}
+
+.off-btn::before,
+.off-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.off-btn::before {
+    background: var(--border-color);
+    z-index: -2;
+}
+
+.off-btn::after {
+    background: var(--background-color);
+    z-index: -1;
+
+    clip-path: polygon(
+        /* top left 1 */
+        var(--border-width)
+        calc(var(--edge-size) + (var(--border-width) * .5)),
+        /* top left 2 */
+        calc(var(--edge-size) + (var(--border-width) * .5))
+        var(--border-width),
+        /* top right */ 
+        calc(100% - var(--border-width))
+        var(--border-width),
+        /* bottom right 1 */
+        calc(100% - var(--border-width))
+        calc(100% - calc(var(--edge-size) + (var(--border-width) * .5))),
+        /* bottom right 2 */
+        calc(100% - calc(var(--edge-size) + (var(--border-width) * .5)))
+        calc(100% - var(--border-width)),
+        /* bottom left */
+        var(--border-width)
+        calc(100% - var(--border-width))
+    );
+    transition: clip-path 300ms;
+}
+
+.off-btn:hover::after {
+    clip-path: polygon(
+        /* top left 1 */
+        calc(100% - var(--border-width))
+        calc(100% - calc(var(--edge-size) + (var(--border-width) * .5))),
+        /* top left 2 */
+        calc(100% - var(--border-width))
+        var(--border-width),
+        /* top right */ 
+        calc(100% - var(--border-width))
+        var(--border-width),
+        /* bottom right 1 */
+        calc(100% - var(--border-width))
+        calc(100% - calc(var(--edge-size) + (var(--border-width) * .5))),
+        /* bottom right 2 */
+        calc(100% - calc(var(--edge-size) + (var(--border-width) * .5)))
+        calc(100% - var(--border-width)),
+        /* bottom left */
+        calc(100% - calc(var(--edge-size) + (var(--border-width) * .5)))
+        calc(100% - var(--border-width))
+    );
+}
+.off-btn:hover {
+    color: black;
+}
